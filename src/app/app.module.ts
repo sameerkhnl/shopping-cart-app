@@ -8,6 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductsComponent } from './products/products.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {JwtInterceptor} from './_helpers/JwtInterceptor';
+import { SignInComponent } from './sign-in/sign-in.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthenticationService} from './_services/AuthenticationService';
 
 @NgModule({
   declarations: [
@@ -16,13 +21,17 @@ import { ProductsComponent } from './products/products.component';
     HomeComponent,
     FooterComponent,
     PageNotFoundComponent,
-    ProductsComponent
+    ProductsComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
