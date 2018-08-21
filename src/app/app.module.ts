@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthenticationService} from './_services/AuthenticationService';
 import { AdminComponent } from './admin/admin.component';
 import {AuthGuard} from './_guards/auth.guard';
+import {ProductService} from './_services/product.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {AuthGuard} from './_guards/auth.guard';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService, AuthGuard],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService, AuthGuard, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,7 +12,9 @@ const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'products', component: ProductsComponent},
   {path: 'login', component: SignInComponent},
+  {path: 'logout', redirectTo: '/home', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'products', component: ProductsComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

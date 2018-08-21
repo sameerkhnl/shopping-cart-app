@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from '../_services/AuthenticationService';
+import {ActivatedRoute, ActivatedRouteSnapshot, NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  onLogin() {
+    let navigationExtras: NavigationExtras = {
+
+    }
+    this.router.navigate(['/login'], navigationExtras);
+  }
+
+  onLogout() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {'logoutRedirectHome' : 'true'}
+    }
+    this.authService.logout();
+    console.log(this.authService.isAuthenticated());
+    this.router.navigate(['/logout'], navigationExtras);
   }
 
 }

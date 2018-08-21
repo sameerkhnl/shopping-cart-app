@@ -38,8 +38,9 @@ export class AuthenticationService {
   }
 
   logout(){
-    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('username');
     sessionStorage.removeItem('token');
+    this.token = null;
   }
 
   isAuthenticated() {
