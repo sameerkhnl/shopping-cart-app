@@ -14,7 +14,7 @@ export class AuthenticationService {
 
   }
 
-  login(user: User){
+  login(user: User, returnUrl: string){
     //let user = new User(username, password);
     let baseUrl = 'http://localhost:8080/auth';
     const httpOptions = {
@@ -33,7 +33,7 @@ export class AuthenticationService {
       sessionStorage.setItem('username', user.username);
       sessionStorage.setItem('password', user.password);
       sessionStorage.setItem('token', this.token);
-      this.router.navigate(['/admin']);
+      this.router.navigate([returnUrl]);
     });
   }
 

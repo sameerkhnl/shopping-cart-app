@@ -21,10 +21,10 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.authService.logout();
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin';
     console.log(this.returnUrl);
   }
   onSubmit() {
-    this.authService.login(new User(this.signInForm.value.username, this.signInForm.value.password));
+    this.authService.login(new User(this.signInForm.value.username, this.signInForm.value.password), this.returnUrl);
   }
 }
