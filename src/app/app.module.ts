@@ -13,6 +13,8 @@ import {JwtInterceptor} from './_helpers/JwtInterceptor';
 import { SignInComponent } from './sign-in/sign-in.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthenticationService} from './_services/AuthenticationService';
+import { AdminComponent } from './admin/admin.component';
+import {AuthGuard} from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {AuthenticationService} from './_services/AuthenticationService';
     FooterComponent,
     PageNotFoundComponent,
     ProductsComponent,
-    SignInComponent
+    SignInComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import {AuthenticationService} from './_services/AuthenticationService';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

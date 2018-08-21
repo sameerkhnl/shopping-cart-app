@@ -7,8 +7,9 @@
                aria-describedby="emailHelp"
                placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <div class="invalid-feedback d-block" *ngIf="!signInForm.controls.username.valid">
-          test feedback
+        <div class="invalid-feedback d-block"
+             *ngIf="signInForm.value.username === '' && signInForm.controls.username.touched">
+          username cannot be empty
         </div>
       </div>
   
@@ -16,8 +17,12 @@
         <label for="passwordInput">Password</label>
         <input type="password" class="form-control" id="passwordInput" formControlName="password"
                placeholder="Password">
+        <div class="invalid-feedback d-block"
+             *ngIf="signInForm.value.password === '' && signInForm.controls.password.touched">
+          password cannot be empty
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid">Submit</button>
     </form>
   </div>
 </div>

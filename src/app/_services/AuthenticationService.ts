@@ -1,32 +1,49 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {Injectable, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../_models/user.model';
+import {text} from '@angular/core/src/render3/instructions';
+import {Subscription} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-  token: String;
+  token: string;
+  tokenSubscription: Subscription;
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router){
 
   }
 
-  login(username: string, password: string){
-    let user = new User(username, password);
+  login(user: User){
+    //let user = new User(username, password);
     let baseUrl = 'http://localhost:8080/auth';
-    let subscription = this.http.post<any>(baseUrl, user).subscribe(token => {
-      this.token = token;
-      localStorage.setItem("token", JSON.stringify(token));
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      return user;
-    }, error => console.log("error while authenticating with the server"));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "text/plain"
+      }),
+      responseType: 'text' as 'text'
+    };
+    console.log(JSON.stringify(user));
+
+
+    return this.http.post(baseUrl, user, httpOptions).subscribe(x => {
+      console.log(x);
+      this.token = x;
+      sessionStorage.setItem('username', user.username);
+      sessionStorage.setItem('password', user.password);
+      sessionStorage.setItem('token', this.token);
+      this.router.navigate(['/admin']);
+    });
   }
 
   logout(){
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('token');
   }
 
   isAuthenticated() {
     return this.token != null;
   }
+
 }
