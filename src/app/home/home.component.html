@@ -1,7 +1,12 @@
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-center">
-      <h2>Welcome to the Shopping cart app</h2>
+      <h2 *ngIf="queryParamMap.get('logoutRedirectHome') === 'true'; else notRedirectedFromLogout">You have been logged
+        out!</h2>
+      
+      <ng-template #notRedirectedFromLogout>
+        <h2>Welcome to the Shopping cart app</h2>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../_services/AuthenticationService';
 import {ActivatedRoute, ActivatedRouteSnapshot, NavigationExtras, Router} from '@angular/router';
+import {Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,6 @@ import {ActivatedRoute, ActivatedRouteSnapshot, NavigationExtras, Router} from '
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,12 +22,12 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-    let navigationExtras: NavigationExtras = {
-      queryParams: {'logoutRedirectHome' : 'true'}
+    let navigationExtras = {
+      queryParams: {'logoutRedirectHome' :  'true'}
     }
     this.authService.logout();
     console.log(this.authService.isAuthenticated());
-    this.router.navigate(['/logout'], navigationExtras);
+    this.router.navigate(['/home'], navigationExtras);
   }
 
 }
