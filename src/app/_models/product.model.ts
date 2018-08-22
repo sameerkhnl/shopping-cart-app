@@ -1,6 +1,6 @@
 export class Product {
 
-  constructor(private name: string, private code: string, private price: number, private image: string) {
+  constructor(public name: string, public code: string, public price: number, public image: string) {
 
   }
 }
