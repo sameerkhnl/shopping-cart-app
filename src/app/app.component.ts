@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
+import {AuthenticationService} from './_services/AuthenticationService';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'app';
-  showLoadingIndicator = false;
+  showLoadingIndicator = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthenticationService) {
     this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationStart) {
         this.showLoadingIndicator = true;
@@ -20,5 +21,9 @@ export class AppComponent {
         this.showLoadingIndicator = false;
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.authService.logout();
   }
 }
