@@ -6,13 +6,13 @@ import {ProductsComponent} from './products/products.component';
 import {SignInComponent} from './sign-in/sign-in.component';
 import {AuthGuard} from './_guards/auth.guard';
 import {AdminComponent} from './admin/admin.component';
-import {ProductDetailsComponent} from './product-details/product-details.component';
+import {ProductComponent} from './product/product.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'products', component: ProductsComponent},
-  {path: 'products/:id', component: ProductDetailsComponent},
+  {path: 'products/:id', component: ProductComponent},
   {path: 'login', component: SignInComponent},
   {path: 'logout', redirectTo: '/home', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},

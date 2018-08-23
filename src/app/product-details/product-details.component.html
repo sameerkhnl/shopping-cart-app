@@ -1,6 +1,6 @@
 <div class="row" *ngIf="product !== null">
-  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-    <form [formGroup]="buyNowForm" (ngSubmit)="onSubmit">
+  <div class="col-12 col-md-10">
+    <form [formGroup]="buyNowForm" (ngSubmit)="onSubmit()">
       <div class="card mb-4">
         <div class="card-body">
           <img [src]="imgBlob" width="200" height="100" *ngIf="imgBlob; else spinnerImage" class="img-fluid"/>
@@ -25,7 +25,7 @@
             <div class="" style="width: 100%;">
               <button type="submit" class="btn btn-success btn-sm mr-2" [disabled]="!buyNowForm.valid">Place
                 Order</button>
-              <button type="submit" class="btn btn-danger btn-sm" [routerLink]="['/products']">Cancel Order</button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="onCancel()">Cancel Order</button>
             </div>
           </div>
         </div>

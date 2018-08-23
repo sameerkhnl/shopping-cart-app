@@ -17,6 +17,9 @@ import { AdminComponent } from './admin/admin.component';
 import {AuthGuard} from './_guards/auth.guard';
 import {ProductService} from './_services/product.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductComponent } from './product/product.component';
+import { CustomerInfoComponent } from './customer-info/customer-info.component';
+import {MessageService} from './_services/message.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductsComponent,
     SignInComponent,
     AdminComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductComponent,
+    CustomerInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService, AuthGuard, ProductService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService, AuthGuard, ProductService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

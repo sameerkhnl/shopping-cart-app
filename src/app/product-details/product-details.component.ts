@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../_services/product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../_models/product.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Url} from 'url';
+import {MessageService} from '../_services/message.service';
 
 @Component({
   selector: 'app-product-details',
@@ -21,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
 
 
 
-  constructor(private sanitizer: DomSanitizer, private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private sanitizer: DomSanitizer, private productService: ProductService, private route: ActivatedRoute, private messageService: MessageService, private router: Router) {
 
   }
 
@@ -37,5 +38,14 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProductImage().subscribe((imgBlob) => {
       this.imgBlob = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + imgBlob);
     });
-  };
+  }
+
+  onSubmit() {
+    this.messageService.createCustomerInfoComponent = true;
+  }
+
+  onCancel() {
+    this.messageService.createCustomerInfoComponent = false;
+    this.router.navigate(['/products'])
+  }
 }
