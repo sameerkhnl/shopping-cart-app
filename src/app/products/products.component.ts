@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   imgBlob: Url;
 
-  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public authService: AuthenticationService, private router: Router) {
+  constructor(public productService: ProductService, private sanitizer: DomSanitizer, authService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit() {

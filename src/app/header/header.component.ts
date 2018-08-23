@@ -9,7 +9,8 @@ import {Observable, of} from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
+
+  constructor(public authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }

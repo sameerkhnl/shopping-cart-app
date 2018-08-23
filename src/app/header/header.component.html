@@ -1,6 +1,11 @@
 <div class="jumbotron bg-dark">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#"><span class="h2">Online Shop</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
@@ -17,13 +22,13 @@
         <a class="nav-link" [routerLink]="['/register']"><span class="text-light">Register</span></a>
       </li>
       
-        <li class="nav-item" *ngIf="authService.isAuthenticated();else notAuthenticated">
-          <a class="nav-link" (click)="onLogout()" style="cursor: pointer;">
+      <li class="nav-item" *ngIf="authService.isAuthenticated();else notAuthenticated">
+        <a class="nav-link" (click)="onLogout()" style="cursor: pointer;">
             <span class="text-light">
               Sign out
             </span>
-          </a>
-        </li>
+        </a>
+      </li>
       <ng-template #notAuthenticated>
         <li class="nav-item">
           <a class="nav-link" (click)="onLogin()" style="cursor: pointer;">
@@ -34,5 +39,6 @@
         </li>
       </ng-template>
     </ul>
+    </div>
   </nav>
 </div>
