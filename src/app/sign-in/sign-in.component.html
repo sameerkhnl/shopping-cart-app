@@ -8,7 +8,7 @@
                placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         <div class="invalid-feedback d-block"
-             *ngIf="signInForm.value.username === '' && signInForm.controls.username.touched">
+             *ngIf="signInForm.value.username === '' && signInForm.get('username').touched">
           username cannot be empty
         </div>
       </div>
@@ -18,7 +18,7 @@
         <input type="password" class="form-control" id="passwordInput" formControlName="password"
                placeholder="Password">
         <div class="invalid-feedback d-block"
-             *ngIf="signInForm.value.password === '' && signInForm.controls.password.touched">
+             *ngIf="signInForm.value.password === '' && signInForm.get('password').touched">
           password cannot be empty
         </div>
       </div>
