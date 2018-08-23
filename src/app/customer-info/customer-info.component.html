@@ -24,8 +24,12 @@
       </div>
       <div class="form-group">
         <label for="phoneInput">Phone</label>
-        <input type="tel" class="form-control" id="phoneInput" formControlName="phoneInput" required
-               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <input type="tel" class="form-control" id="phoneInput" formControlName="phoneInput" required>
+        <div class="invalid-feedback d-block" *ngIf="customerInfoForm.get('phoneInput').touched">
+          <span *ngIf="customerInfoForm.get('phoneInput').hasError('required')">Phone number is required</span>
+          <span *ngIf="customerInfoForm.get('phoneInput').hasError('pattern')">Phone number cannot include
+            alphabets and must be between 5 and 15 characters</span>
+        </div>
       </div>
       <div class="form-group">
         <label for="addressInput">Address</label>

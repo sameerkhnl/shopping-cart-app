@@ -21,7 +21,6 @@ export class ProductDetailsComponent implements OnInit {
   });
 
 
-
   constructor(private sanitizer: DomSanitizer, private productService: ProductService, private route: ActivatedRoute, private messageService: MessageService, private router: Router) {
 
   }
