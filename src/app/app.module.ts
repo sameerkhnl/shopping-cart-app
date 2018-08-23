@@ -16,6 +16,7 @@ import {AuthenticationService} from './_services/AuthenticationService';
 import { AdminComponent } from './admin/admin.component';
 import {AuthGuard} from './_guards/auth.guard';
 import {ProductService} from './_services/product.service';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ProductService} from './_services/product.service';
     PageNotFoundComponent,
     ProductsComponent,
     SignInComponent,
-    AdminComponent
+    AdminComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

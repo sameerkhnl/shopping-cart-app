@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 import {AuthenticationService} from './_services/AuthenticationService';
 
@@ -7,7 +7,14 @@ import {AuthenticationService} from './_services/AuthenticationService';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, OnInit {
+
+  ngOnInit() {
+    this.authService.logout();
+  }
+
+
+
   title = 'app';
   showLoadingIndicator = true;
 

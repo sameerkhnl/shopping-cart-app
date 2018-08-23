@@ -7,8 +7,8 @@ import {ResponseContentType} from '@angular/http';
 
 @Injectable()
 export class ProductService {
-  baseurl = "http://localhost:8080/auth/products";
-  imageurl = "http://localhost:8080/auth/products/image"
+  baseurl = "http://localhost:8080/products";
+  imageurl = "http://localhost:8080/products/image";
 
   constructor(private http: HttpClient){
 
@@ -16,6 +16,10 @@ export class ProductService {
 
   getProducts() : Observable<Product[]> {
     return this.http.get<Product[]>(this.baseurl);
+  }
+
+  getProductByCode(code: string) : Observable<Product> {
+    return this.http.get<Product>(this.baseurl + "/" + code);
   }
 
   getProductImage() {
@@ -27,7 +31,6 @@ export class ProductService {
     };
     return this.http.get(this.imageurl, httpOptions);
   }
-
 
 
 

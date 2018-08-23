@@ -1,0 +1,36 @@
+<div class="row" *ngIf="product !== null">
+  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+    <form [formGroup]="buyNowForm" (ngSubmit)="onSubmit">
+      <div class="card mb-4">
+        <div class="card-body">
+          <img [src]="imgBlob" width="200" height="100" *ngIf="imgBlob; else spinnerImage" class="img-fluid"/>
+          <ng-template #spinnerImage>
+          <img src="https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" width="70" height="50" class="img-fluid">
+          </ng-template>
+          
+          <h5 class="card-title mt-3">{{product.name}}</h5>
+          <div class="ml-auto mr-auto">
+            <p class="card-text">{{product.code}}</p>
+            <p class="card-text"><span class="font-weight-bold">{{product.price}}</span></p>
+            <div class="form-group">
+              <p><label for="quantityInput">Quantity</label>&nbsp;
+                <input type="number" class="form-control w-50 d-inline" id="quantityInput"
+                       formControlName="quantity" min="1" max="10"></p>
+              <div class="invalid-feedback d-block" *ngIf="!buyNowForm.valid && buyNowForm.touched">
+                <span *ngIf="buyNowForm.get('quantity').hasError('required')">Quantity is required</span>
+                <span *ngIf="buyNowForm.get('quantity').hasError('min')">Quantity must be at least 1</span>
+                <span *ngIf="buyNowForm.get('quantity').hasError('max')">Quantity cannot be greater than 10</span>
+              </div>
+            </div>
+            <div class="" style="width: 100%;">
+              <button type="submit" class="btn btn-success btn-sm mr-2" [disabled]="!buyNowForm.valid">Place
+                Order</button>
+              <button type="submit" class="btn btn-danger btn-sm" [routerLink]="['/products']">Cancel Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </form>
+  </div>
+</div>

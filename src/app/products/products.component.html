@@ -14,9 +14,9 @@
           <p class="card-text"><span class="font-weight-bold">{{product.price}}</span></p>
         </div>
         <div class="mt-3">
-          <button class="btn btn-success btn-sm ml-auto mr-auto">Buy Now</button>
+          <button class="btn btn-success btn-sm ml-auto mr-auto" (click)="onBuyNow(product.code)">Buy Now</button>
           
-          <button class="btn btn-primary btn-sm float-right">Edit item</button>
+          <button class="btn btn-primary btn-sm float-right" *ngIf="authService.isAuthenticated()">Edit item</button>
         </div>
       </div>
     </div>
