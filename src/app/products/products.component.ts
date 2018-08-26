@@ -5,6 +5,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {Url} from 'url';
 import {AuthenticationService} from '../_services/AuthenticationService';
 import {Router} from '@angular/router';
+import {MessageService} from '../_services/message.service';
 
 @Component({
   selector: 'app-products',
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   imgBlob: Url;
 
-  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public authService: AuthenticationService, private router: Router) {
+  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public authService: AuthenticationService, private router: Router, public messageService: MessageService) {
   }
 
   ngOnInit() {

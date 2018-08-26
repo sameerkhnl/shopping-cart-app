@@ -5,7 +5,7 @@
         <div class="card-body">
           <img [src]="imgBlob" width="200" height="100" *ngIf="imgBlob; else spinnerImage" class="img-fluid"/>
           <ng-template #spinnerImage>
-          <img src="https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" width="70" height="50" class="img-fluid">
+            <img src="https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" width="70" height="50" class="img-fluid">
           </ng-template>
           
           <h5 class="card-title mt-3">{{product.name}}</h5>
@@ -23,8 +23,8 @@
               </div>
             </div>
             <div class="" style="width: 100%;">
-              <button type="submit" class="btn btn-success btn-sm mr-2" [disabled]="!buyNowForm.valid">Place
-                Order</button>
+              <button type="submit" class="btn btn-success btn-sm mr-2" [disabled]="!buyNowForm.valid">Add to Cart
+              </button>
               <button type="button" class="btn btn-danger btn-sm" (click)="onCancel()">Cancel Order</button>
             </div>
           </div>

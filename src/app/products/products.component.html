@@ -1,4 +1,12 @@
+<div class="row mb-5" *ngIf="messageService.itemAddedToCart">
+  <div class="col-12">
+    <div class="alert-success" role="alert">Your item has been added to the cart.<a
+      [routerLink]="['/cart']"> View
+      Cart</a></div>
+  </div>
+</div>
 <div class="row">
+  
   <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let product of products">
     
     <div class="card mb-4">

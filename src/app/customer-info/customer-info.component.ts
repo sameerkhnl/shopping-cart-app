@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MessageService} from '../_services/message.service';
+import {OrderService} from '../_services/order.service';
 
 @Component({
   selector: 'app-customer-info',
@@ -17,13 +19,14 @@ export class CustomerInfoComponent implements OnInit {
   });
 
 
-  constructor() { }
+  constructor(private messageService: MessageService, private orderService: OrderService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
 
+    //this.orderService.post
   }
 
 }
