@@ -14,7 +14,7 @@ export class CartModel {
         this.cartLine[this.findItemInCart(product)].incrementQuantityByOne();
       }
     } else {
-      this.cartLine.push(new CartLineModel(product, 1));
+      this.cartLine.push(new CartLineModel(product, quantity));
     }
   }
 
@@ -42,8 +42,14 @@ export class CartModel {
 
 
   getTotalAmount(){
-    let amounts: Number[] = [];
-    return this.cartLine.map(x => amounts.push(x.getAmount())).reduce((a,b) => a + b, 0);
+    let amounts: number[] = [];
+    this.cartLine.map(x => amounts.push(x.getAmount()));
+    if(amounts.length > 0){
+      return amounts.reduce((a,b) => a + b);
+    } else {
+      return 0;
+    }
+
   }
 
   subtractItemFromCart(product: Product) {

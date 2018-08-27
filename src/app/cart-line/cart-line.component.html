@@ -3,16 +3,19 @@
       <div class="card mb-4">
         <div class="card-body">
           <img [src]="imageService.imgBlob" width="200" height="100" *ngIf="imageService.imgBlob; else spinnerImage"
-               class="img-fluid"/>
+               class="img-fluid float-left mr-5"/>
           <ng-template #spinnerImage>
-            <img src="https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" width="70" height="50" class="img-fluid">
+            <img src="https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" width="70" height="50"
+                 class="img-fluid float-left mr-5">
           </ng-template>
           
           <h5 class="card-title mt-3">{{product.name}}</h5>
           <div class="ml-auto mr-auto">
             <p class="card-text">{{product.code}}</p>
-            <p class="card-text"><span class="font-weight-bold">{{product.price}}</span></p>
-            
+            <p class="card-text"><span class="font-weight-bold">Price: {{product.price}}</span></p>
+          </div>
+          <div class="ml-auto mr-auto">
+            <p class="card-text"><span class="font-weight-bold">Quantity: {{quantity}}</span></p>
           </div>
         </div>
       </div>

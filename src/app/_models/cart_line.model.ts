@@ -6,7 +6,8 @@ export class CartLineModel {
   }
 
   getAmount() {
-    return this.product.price * this.quantity;
+    console.log("get amount" + this.product.price * this.quantity);
+    return (this.product.price * this.quantity);
   }
 
   incrementQuantityByOne() {

@@ -4,3 +4,8 @@
                    [quantity]="c.quantity" [imgBlob]="c.product.image"></app-cart-line>
   </div>
 </div>
+<div class="row" *ngIf="currentCart.getTotalAmount()">
+  <div class="col-12">
+    <p class="alert-info h2">Grand total: {{currentCart.getTotalAmount()}}</p>
+  </div>
+</div>
