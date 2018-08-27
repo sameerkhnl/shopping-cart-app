@@ -1,0 +1,20 @@
+<div class="row" *ngIf="product">
+  <div class="col-12 col-md-10">
+      <div class="card mb-4">
+        <div class="card-body">
+          <img [src]="imageService.imgBlob" width="200" height="100" *ngIf="imageService.imgBlob; else spinnerImage"
+               class="img-fluid"/>
+          <ng-template #spinnerImage>
+            <img src="https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" width="70" height="50" class="img-fluid">
+          </ng-template>
+          
+          <h5 class="card-title mt-3">{{product.name}}</h5>
+          <div class="ml-auto mr-auto">
+            <p class="card-text">{{product.code}}</p>
+            <p class="card-text"><span class="font-weight-bold">{{product.price}}</span></p>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

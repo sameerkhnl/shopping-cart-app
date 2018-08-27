@@ -22,6 +22,8 @@ import { CustomerInfoComponent } from './customer-info/customer-info.component';
 import {MessageService} from './_services/message.service';
 import {OrderService} from './_services/order.service';
 import { CartComponent } from './cart/cart.component';
+import { CartLineComponent } from './cart-line/cart-line.component';
+import {ImageService} from './_services/image.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { CartComponent } from './cart/cart.component';
     ProductDetailsComponent,
     ProductComponent,
     CustomerInfoComponent,
-    CartComponent
+    CartComponent,
+    CartLineComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { CartComponent } from './cart/cart.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService, AuthGuard, ProductService, MessageService, OrderService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, AuthenticationService, AuthGuard, ProductService, MessageService, OrderService, ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

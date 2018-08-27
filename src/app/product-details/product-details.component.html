@@ -3,7 +3,8 @@
     <form [formGroup]="buyNowForm" (ngSubmit)="onSubmit()">
       <div class="card mb-4">
         <div class="card-body">
-          <img [src]="imgBlob" width="200" height="100" *ngIf="imgBlob; else spinnerImage" class="img-fluid"/>
+          <img [src]="imageService.imgBlob" width="200" height="100" *ngIf="imageService.imgBlob; else spinnerImage"
+               class="img-fluid"/>
           <ng-template #spinnerImage>
             <img src="https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" width="70" height="50" class="img-fluid">
           </ng-template>

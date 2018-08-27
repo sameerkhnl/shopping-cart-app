@@ -6,6 +6,7 @@ import {Url} from 'url';
 import {AuthenticationService} from '../_services/AuthenticationService';
 import {Router} from '@angular/router';
 import {MessageService} from '../_services/message.service';
+import {ImageService} from '../_services/image.service';
 
 @Component({
   selector: 'app-products',
@@ -14,19 +15,14 @@ import {MessageService} from '../_services/message.service';
 })
 export class ProductsComponent implements OnInit {
   products: Product[];
-  imgBlob: Url;
 
-  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public authService: AuthenticationService, private router: Router, public messageService: MessageService) {
+  constructor(public productService: ProductService, private sanitizer: DomSanitizer, public authService: AuthenticationService, private router: Router, public messageService: MessageService, public imageService: ImageService) {
   }
 
   ngOnInit() {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
       console.log(this.products);
-    }, error1 => console.log(error1));
-
-    this.productService.getProductImage().subscribe((imgBlob) => {
-      this.imgBlob = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + imgBlob);
     }, error1 => console.log(error1));
   }
 
